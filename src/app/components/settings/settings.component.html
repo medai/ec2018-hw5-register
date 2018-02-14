@@ -1,0 +1,44 @@
+<a routerLink="/">
+  <i class="fa fa-arrow-circle-o-left"></i>
+  Back to Dashboard
+</a>
+
+<div class="card mt-3">
+
+  <div class="card-header">
+    Edit settings
+  </div>
+
+  <div class="card-body">
+    <form (submit)="onSubmit()">
+
+      <div class="form-group">
+        <label class="mr-1">Allow Registration</label>
+        <input type="checkbox"
+               name="allowRegistration"
+              [checked]="settings.allowRegistration"
+              (change)="settings.allowRegistration = !settings.allowRegistration">
+      </div>
+
+      <div class="form-group">
+        <label class="mr-1">Disable Balance On</label>
+        <input type="checkbox"
+               name="disableBalanceOnAdd"
+               [checked]="settings.disableBalanceOnAdd"
+               (change)="settings.disableBalanceOnAdd = !settings.disableBalanceOnAdd">
+      </div>
+
+      <div class="form-group">
+        <label class="mr-1">Disable balance On Edit</label>
+        <input type="checkbox"
+               name="allowRegistration"
+               [checked]="settings.disableBalanceOnEdit"
+               (change)="settings.disableBalanceOnEdit = !settings.disableBalanceOnEdit">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+  </div>
+
+</div>

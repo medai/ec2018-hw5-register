@@ -1,0 +1,106 @@
+<a routerLink="/client/{{editClient.id}}">
+  <i class="fa fa-arrow-circle-o-left"></i>
+  Back to Client
+</a>
+
+<div class="card mt-3">
+  <div class="card-header">
+    Edit client
+  </div>
+
+
+  <div class="card-body">
+    <form #clientForm="ngForm" (ngSubmit)="onSubmit(editClientForm)">
+
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type                  ="text"
+               class               ="form-control"
+               name                 ="firstName"
+               [ngClass]            ="{'is-invalid': editClientFirstName.errors && editClientFirstName.touched}"
+               [(ngModel)]          ="editClient.firstName"
+               #editClientFirstName ="ngModel"
+               minlength            ="2"
+               id                   ="firstName"
+               required>
+        <div class="invalid-feedback" [hidden]="!editClientFirstName.errors?.required">
+          First name required
+        </div>
+        <div class="invalid-feedback" [hidden]="!editClientFirstName.errors?.minlength">
+          Must be at least 2 characters
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type                 ="text"
+               class                ="form-control"
+               name                 ="lastName"
+               [ngClass]            ="{'is-invalid': editClientLastName.errors && editClientLastName.touched}"
+               [(ngModel)]          ="editClient.lastName"
+               #editClientLastName  ="ngModel"
+               minlength            ="2"
+               id                   ="lastName"
+               required>
+        <div class="invalid-feedback" [hidden]="!editClientLastName.errors?.required">
+          Last name required
+        </div>
+        <div class="invalid-feedback" [hidden]="!editClientLastName.errors?.minlength">
+          Must be at least 2 characters
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type             ="email"
+               class            ="form-control"
+               name             ="email"
+               [ngClass]        ="{'is-invalid': editClientEmail.errors && editClientEmail.touched}"
+               [(ngModel)]      ="editClient.email"
+               #editClientEmail ="ngModel"
+               pattern          ="^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$"
+               id               ="email"
+               required>
+        <div class="invalid-feedback" [hidden]="!editClientEmail.errors?.required">
+          Email required
+        </div>
+        <div class="invalid-feedback" [hidden]="!editClientEmail.errors?.pattern">
+          Must be example@example.com
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type             ="text"
+               class            ="form-control"
+               name             ="phone"
+               [ngClass]        ="{'is-invalid': editClientPhone.errors && editClientPhone.touched}"
+               [(ngModel)]      ="editClient.phone"
+               #editClientPhone ="ngModel"
+               minlength        ="10"
+               id               ="phone"
+               required>
+        <div class="invalid-feedback" [hidden]="!editClientPhone.errors?.required">
+          Phone required
+        </div>
+        <div class="invalid-feedback" [hidden]="!editClientPhone.errors?.pattern">
+          Must be least 10 characters
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="balance">Balance</label>
+        <input type               ="text"
+               class              ="form-control"
+               name               ="balance"
+               [(ngModel)]        ="editClient.balance"
+               [disabled]         ="disabledBalanceOnAdd"
+               #editClientBalance ="ngModel"
+               id                 ="balance"
+               required>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+  </div>
+</div>
